@@ -1,14 +1,17 @@
+
 <template>
     <div id="msite">
-        msite
+       <XHeader class="head" title="我的" :right-options="{showMore:true}"></XHeader>
     </div>
 </template>
 
 <script>
+import { XHeader } from 'vux'
 export default {
+    components:{XHeader},
     data(){
         return {
-            
+            color:"red"
         }
     },
     computed:{
@@ -24,5 +27,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .head{
+        height: 90px;
+        color: #fff
+    }
 </style>

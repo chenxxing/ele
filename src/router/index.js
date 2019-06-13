@@ -16,7 +16,8 @@ export default new Router({
   routes: [
     {
       path:'/',
-      redirect:'/home'
+      redirect:'/home',
+      component: Home
     },//这个是设置默认路由
     {
       //redirect:'/home',
