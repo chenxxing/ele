@@ -4,6 +4,10 @@ import Router from 'vue-router'
 const Home = r => require.ensure([], () => r(require('@/page/Home/home')),'home')
 const City = r => require.ensure([], () => r(require('@/page/City/city')),'city')
 const Msite = r => require.ensure([], () => r(require('@/page/Msite/msite')),'msite')
+const List = r => require.ensure([], () => r(require('@/page/Msite/children/list')),'list')
+const My = r => require.ensure([], () => r(require('@/page/Msite/children/my')),'my')
+const Order = r => require.ensure([], () => r(require('@/page/Msite/children/order')),'order')
+const Search = r => require.ensure([], () => r(require('@/page/Msite/children/search')),'search')
 
 //import Home from '@/page/Home/home'
 //import City from '@/page/City/city'
@@ -31,9 +35,31 @@ export default new Router({
       component:City
     },
     {
-      path:'/msite',
+      path:'/msite/list',
       name:'Msite',
-      component:Msite
+      component:Msite,
+      children:[
+        {
+          path:'/msite/list',
+          name:'List',
+          component:List
+        },
+        {
+          path:'/msite/my',
+          name:'My',
+          component:My
+        },
+        {
+          path:'/msite/order',
+          name:'Order',
+          component:Order
+        },
+        {
+          path:'/msite/search',
+          name:'Search',
+          component:Search
+        },
+      ]
     }
   ]
 })

@@ -90,7 +90,7 @@ export default {
                 this.placeHistory.push(choosePlace)
             }
             setstore('placeHistory',this.placeHistory)
-            this.$router.push({path:'/msite',query:{geohash}})
+            this.$router.push({path:'/msite/list',query:{geohash}})
         },
         clearall(){
             removestore('placeHistory');
