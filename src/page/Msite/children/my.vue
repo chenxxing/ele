@@ -1,13 +1,8 @@
 <template>
     <div id="My">
         <header>
-           <i class="icon iconfont icon-search"></i>
+           <i class="icon iconfont icon-fanhui" @click="$router.go(-1)"></i>
            <span class="loaction">我的</span>
-           <div class="login">
-               <span>登录</span>
-               <span>|</span>
-               <span>注册</span>
-           </div>
        </header>
        <div class="content">
             
@@ -37,7 +32,7 @@ export default {
             position: fixed;
             left: 0;
             top: 0;
-            .icon-search{
+            .icon-fanhui{
                 font-size: 36px;
                 color: #fff;
             }
@@ -46,13 +41,6 @@ export default {
                 color: #fff;
                 flex:1;
                 text-align: center;
-            }
-            .login{
-                float: right;
-                span{
-                    color: #fff;
-                    font-size: 30px;
-                }
             }
         }
 }

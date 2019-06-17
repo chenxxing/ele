@@ -40,15 +40,28 @@ export default {
         .icon-search{
             font-size: 36px;
             color: #fff;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
         }
         .loaction{
             font-size: 34px;
             color: #fff;
-            flex:1;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 50%;
+            transform: translate(-50%,-50%);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             text-align: center;
+            display: block;
+            width: 340px;
         }
         .login{
-            float: right;
+            position: absolute;
+            right: 20px;
             span{
                 color: #fff;
                 font-size: 30px;

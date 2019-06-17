@@ -1,10 +1,12 @@
 
 <template>
     <div id="msite">
-        <router-view/>
+        <transition name="child-fade">
+            <router-view></router-view>
+        </transition>
        <footer class="footers">
            <dl v-for="(item,index) in footerList" :key="index" @click="$router.push(item.path)" :class="$route.path===item.path?'active':''">
-               <dt :class="item.icon"></dt>
+               <dt :class="$route.path===item.path?item.icon:item.newicon"></dt>
                <dd>{{item.name}}</dd>
            </dl>
        </footer>
@@ -57,6 +59,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	.child-fade-enter-active,.child-fade-leave-active {
+	  	transition: opacity .7s;
+    }
+	.child-fade-enter ,.child-fade-leave-to{
+        opacity: 0;
+    }
     #msite{
         width: 100%;
         padding-bottom: 90px;
