@@ -19,7 +19,6 @@ export default {
 <style lang="scss" scoped>
 #My{
     width: 100%;
-        padding-bottom: 90px;
         header{
             width: 100%;
             height: 90px;
