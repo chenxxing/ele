@@ -37,6 +37,7 @@ var originalConfig = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       'src': path.resolve(__dirname, '../src'),
+      'static':resolve('static')
     }
   },
   module: {

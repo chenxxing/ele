@@ -18,22 +18,22 @@
         <section class="hot_city ty_city">
             <h4>热门城市</h4>
             <ul>
+                <!-- <router-link tag="li" v-for="(item ,idx) in hotcity" :key="idx" :to="{path:'/city',query:{cityid:item.id,cityname:item.name}}">{{item.name}}</router-link> -->
                 <router-link tag="li" v-for="(item ,idx) in hotcity" :key="idx" :to="'/city/' + item.id + '/' + item.name">{{item.name}}</router-link>
-                <!-- <li v-for="(item ,idx) in hotcity" :key="idx">{{item.name}}</li> -->
             </ul>
         </section>
         <section class="zm_city ty_city" v-for="(value, key, index) in sortgroupcity" :key="key">
             <h4>{{key}}<span v-if="index == 0">(按字母排序)</span></h4>
             <ul>
+                <!-- <router-link tag="li" v-for="item in value" :key="item.id" :to="{path:'/city',query:{cityid:item.id,cityname:item.name}}">{{item.name}}</router-link> -->
                 <router-link tag="li" v-for="item in value" :key="item.id" :to="'/city/' + item.id+ '/' + item.name">{{item.name}}</router-link>
-                <!-- <li v-for="(item ,idx) in value" :key="idx">{{item.name}}</li> -->
             </ul>
         </section>   
     </div>
 </template>
 
 <script>
-import {GroupCity,Guess,HotCity} from "../../service/getData"
+import {GroupCity,Guess,HotCity} from "@/service/getData"
 export default {
     compnents:{},
     data(){
@@ -91,7 +91,7 @@ export default {
     },
     methods:{
         GoCity(){
-            this.$router.push({ path:'/city',name: 'City', params: { cityid: this.guessCityid,cityname:this.guessCityname }})
+            this.$router.push({ name:'City', params: { cityid: this.guessCityid,cityname:this.guessCityname }})
         }
     }
 }

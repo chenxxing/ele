@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import {SeachList} from '../../service/getData'
-import {getstore,setstore,removestore} from '../../config/mUtils'
+import {SeachList} from '@/service/getData'
+import {getstore,setstore,removestore} from '@/config/mUtils'
 import { constants } from 'fs';
 export default {
     component:[],
@@ -48,6 +48,9 @@ export default {
     mounted(){
         this.cityid = this.$route.params.cityid;
         this.cityname = this.$route.params.cityname;
+
+        //         this.cityid = this.$route.params.cityid;
+        // this.cityname = this.$route.params.cityname;
         this.initData();
     },
     computed:{

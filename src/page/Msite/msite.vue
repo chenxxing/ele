@@ -5,7 +5,7 @@
             <router-view></router-view>
         </transition>
        <footer class="footers">
-           <dl v-for="(item,index) in footerList" :key="index" @click="$router.push(item.path)" :class="$route.path===item.path?'active':''">
+           <dl v-for="(item,index) in footerList" :key="index" @click="$router.push({path:item.path,query:{}})" :class="$route.path===item.path?'active':''">
                <dt :class="$route.path===item.path?item.icon:item.newicon"></dt>
                <dd>{{item.name}}</dd>
            </dl>

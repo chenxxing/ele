@@ -15,7 +15,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(item,index) in navlist" :key="'slide' + index">
                             <ul>
-                                <router-link tag="li" :to="{}" v-for="items in item" :key="'nav' + items.id">
+                                <router-link tag="li" :to="{path:'/food',query:{geohash,headtitle:items.title,restaurant_category_id:getCategoryId(items.link)}}" v-for="items in item" :key="'nav' + items.id">
                                     <img :src="imgBaseUrl + items.image_url" alt="">
                                     <span>{{items.title}}</span>
                                 </router-link>
@@ -71,10 +71,10 @@
 </template>
 
 <script>
-import {msiteFoodTypes,restaurants} from '../../../service/getData'
-import rating from 'src/components/rating/rating'
-import 'src/plugins/swiper.min.js'
-import 'src/styles/swiper.min.css'
+import {msiteFoodTypes,restaurants} from '@/service/getData'
+import rating from '@/components/rating/rating'
+import '@/plugins/swiper.min.js'
+import '@/styles/swiper.min.css'
 export default {
     components:{rating},
     data(){
@@ -87,6 +87,11 @@ export default {
         }
     },
     mounted(){
+        // this.$axios.get('/movie/top250').then((res) => {
+        //     console.log(res);
+        // }).catch(err => {
+        //     console.log(err)
+        // })
         this.geohash = this.$route.query.geohash
         msiteFoodTypes(this.geohash).then(res => {
             let reslength = res.data.length;
@@ -116,7 +121,15 @@ export default {
 
     },
     methods:{
-
+        getCategoryId(url){
+            let urldata = decodeURIComponent(url.split('=')[1].replace('&target_name',''))
+            //"{"category_schema":{"category_name":"\u751c\u54c1\u996e\u54c1","complex_category_ids":[240,241,242],"is_show_all_category":true},"restaurant_category_id":{"id":239,"name":"\u751c\u54c1\u996e\u54c1","sub_categories":[],"image_url":""},"activities":[]}"
+            if (/restaurant_category_id/gi.test(urldata)) {
+    			return JSON.parse(urldata).restaurant_category_id.id
+    		}else{
+    			return ''
+    		}
+        }
     }
 }
 </script>

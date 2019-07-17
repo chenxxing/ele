@@ -14,7 +14,7 @@ export default {
 
 <style lang="scss">
 	.router-fade-enter-active, .router-fade-leave-active {
-	  	transition: opacity .7s;
+	  	transition: opacity .5s;
 	}
 	.router-fade-enter, .router-fade-leave-to {
 	  	opacity: 0;

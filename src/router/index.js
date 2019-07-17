@@ -8,11 +8,12 @@ const List = r => require.ensure([], () => r(require('@/page/Msite/children/list
 const My = r => require.ensure([], () => r(require('@/page/Msite/children/my')),'my')
 const Order = r => require.ensure([], () => r(require('@/page/Msite/children/order')),'order')
 const Search = r => require.ensure([], () => r(require('@/page/Msite/children/search')),'search')
+const Food = r => require.ensure([],() => r(require('@/page/Food/food')),'food')
 
 //import Home from '@/page/Home/home'
 //import City from '@/page/City/city'
 //import Msite from '@/page/Msite/msite'
-
+var id = "520";
 Vue.use(Router)
 
 export default new Router({
@@ -31,35 +32,41 @@ export default new Router({
     },
     {
       path:'/city/:cityid/:cityname',
+      //path:`/city/${id}/${parseFloat(id)+794}`,
       name:'City',
       component:City
     },
     {
-      path:'/msite/list',
+      path:'/msite',
       name:'Msite',
       component:Msite,
       children:[
         {
-          path:'/msite/list',
+          path:'list',
           name:'List',
           component:List
         },
         {
-          path:'/msite/my',
+          path:'my',
           name:'My',
           component:My
         },
         {
-          path:'/msite/order',
+          path:'order',
           name:'Order',
           component:Order
         },
         {
-          path:'/msite/search',
+          path:'search',
           name:'Search',
           component:Search
         },
       ]
+    },
+    {
+      path:'/food',
+      name:'Food',
+      component:Food
     }
   ]
 })
