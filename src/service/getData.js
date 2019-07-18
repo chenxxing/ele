@@ -21,3 +21,6 @@ export const restaurants = () => {
 export const taurants = () => {
     return axios.get('static/taurants.json')
 }
+export const category = () => {
+    return axios.get('static/category.json')
+}
