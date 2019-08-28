@@ -10,7 +10,7 @@
            </div>
        </header>
        <div class="content">
-            <nav class="list">
+            <nav class="list" >
                   <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="(item,index) in navlist" :key="'slide' + index">
@@ -39,7 +39,7 @@
                                 <span>{{item.name}}</span>
                             </div>
                             <div class="score">
-                                <rating :rating="item.rating"></rating>
+                                <rating :rating="item.rating" @eventname='aaa'></rating>
                                 <div>{{item.rating}}</div>
                                 <div>
                                     月售<span>{{item.recent_order_num}}</span>单
@@ -47,7 +47,7 @@
                             </div>
                             <div class="money">
                                 <span>￥{{item.float_minimum_order_amount}}起送</span>/
-                                <span>配送费约￥{{item.float_delivery_fee}}</span>
+                                <span>配送费￥{{item.float_delivery_fee}}</span>
                             </div>
                         </div>
                         <div class="times">
@@ -75,6 +75,7 @@ import {msiteFoodTypes,restaurants} from '@/service/getData'
 import rating from '@/components/rating/rating'
 import '@/plugins/swiper.min.js'
 import '@/styles/swiper.min.css'
+import { constants } from 'fs';
 export default {
     components:{rating},
     data(){
@@ -129,7 +130,11 @@ export default {
     		}else{
     			return ''
     		}
+        },
+        aaa(data){
+            console.log('我接收到子组件的信息为=' + data)
         }
+        
     }
 }
 </script>
@@ -252,7 +257,6 @@ export default {
             width: 100%;
             ul{
                 width: 100%;
-                padding-bottom: 90px;
                 li{
                     width: 100%;
                     display: flex;
@@ -325,36 +329,48 @@ export default {
                             padding: 0 5px;
                             border-radius: 8px;
                             letter-spacing: 5px;
+                            transform: scale(0.8);
                         }
                         div:nth-child(2){
                             margin-top: 16px;
+                            width: 100%;
+                            text-align: right;
                             span:nth-child(1){
                                 display: inline-block;
-                                width: 100px;
+                                width: 120px;
                                 height: 30px;
                                 border-radius: 5px;
                                 background: #3190e8;
                                 a{
                                     color: #fff;
                                     display: inline-block;
-                                    transform: scale(0.8)
+                                    transform: scale(0.8);
+                                    width: 100%;
+                                    text-align: center;
                                 }
                             }
                             span:nth-child(2){
                                 display: inline-block;
-                                width: 80px;
+                                width: 100px;
                                 height: 30px;
                                 border: 1px solid #3190e8;
                                 border-radius: 5px;
                                 a{
                                     color: #3190e8;
                                     display: inline-block;
-                                    transform: scale(0.8)
+                                    transform: scale(0.8);
+                                    width: 100%;
+                                    text-align: center;
                                 }
                             }
                         }
                         div:nth-child(3){
                             margin-top: 16px;
+                            width: 100%;
+                            text-align: right;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
                             span:nth-child(1){
                                 color: #555;
                                 display: inline-block;

@@ -99,10 +99,16 @@ export default {
 
 <style lang="scss" scoped>
 #home{
+    width: 100%;
+    padding-top: 90px;
     header{
+        width: 100%;
         height: 90px;
         background: #3190e8;
         line-height: 90px;
+        position: fixed;
+        left: 0;
+        top: 0;
         span{
             color: #fff;
             font-size: 28px;

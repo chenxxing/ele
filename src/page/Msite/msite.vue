@@ -5,7 +5,7 @@
             <router-view></router-view>
         </transition>
        <footer class="footers">
-           <dl v-for="(item,index) in footerList" :key="index" @click="$router.push({path:item.path,query:{}})" :class="$route.path===item.path?'active':''">
+           <dl v-for="(item,index) in footerList" :key="index" @click="$router.push({path:item.path + '?geohash=' + geohash,query:{}})" :class="$route.path===item.path?'active':''">
                <dt :class="$route.path===item.path?item.icon:item.newicon"></dt>
                <dd>{{item.name}}</dd>
            </dl>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import {getstore,setstore,removestore} from '@/config/mUtils'
 export default {
     components:{},
     data(){
@@ -43,17 +44,21 @@ export default {
 						icon: "icon iconfont icon-denglu",
 						newicon: "icon iconfont icon-denglu",
 					}
-				]
+                ],
+                geohash:null,
         }
     },
     computed:{
-
+        
     },
     methods:{
 
+        
     },
     mounted(){
-
+       this.geohash = getstore('geohash')
+       console.log(this.footerList)
+       console.log(this.footerList[0])
     }
 }
 </script>

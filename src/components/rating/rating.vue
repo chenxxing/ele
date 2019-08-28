@@ -3,9 +3,9 @@
         <template v-if="full === 0">
             <span>暂无评分</span>
         </template>
-        <template v-else>
+        <template v-else >
 
-                <span v-for="(n,idx) in full" :key="'full' + idx" class="star-full"></span>
+                <span @click="toparent('我是来自子组件的信息')" v-for="(n,idx) in full" :key="'full' + idx" class="star-full"></span>
 
                 <span v-for="(n,idx) in half" :key="'half' + idx" class="star-half"></span>
 
@@ -45,7 +45,11 @@ export default {
 
     },
     methods:{
-
+toparent(data){
+            var val = data
+            console.log(val)
+            this.$emit('eventname',val)
+        }
     }
 }
 </script>
